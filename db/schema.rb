@@ -15,7 +15,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_25_133736) do
     t.string "c4_acct_name"
     t.string "c4_token"
     t.string "c3_acct_name"
-    t.string "c3_token"
     t.string "c3_url"
     t.integer "page"
     t.datetime "job_start_time", precision: nil
