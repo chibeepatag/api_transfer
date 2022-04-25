@@ -1,0 +1,2 @@
+class DataTransferController < ApplicationController
+end
