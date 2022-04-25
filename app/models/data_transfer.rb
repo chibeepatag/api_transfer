@@ -1,0 +1,2 @@
+class DataTransfer < ApplicationRecord
+end
