@@ -1,7 +1,7 @@
 # API Transfer
 Migrates data from Imonggo C4 to Imonggo C3
 
-* Ruby 2.7.1
+* Ruby 2.7.5
 * Rails 7.0.2.3
 * Sidekiq for brackground task of retrieving and posting data
 
