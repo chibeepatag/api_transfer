@@ -28,7 +28,7 @@
             <tr>
                 <td>Data Type</td>
                 <td><%= data_transfer.select :transfer_data_type, 
-                ['Products', 'Users', 'Invoices', 'Documents'] %></td>
+                ['Products', 'Users', 'Invoices', 'Documents'], selected: "Products"%></td>
             </tr>
             <tr>
                 <td><%= data_transfer.label :page %></td>
@@ -36,5 +36,8 @@
             </tr>
         </table>
     </div>
-    <%= data_transfer.submit %>
+    <div>
+        <%= data_transfer.submit %>
+    </div>
+    
 <% end %>
