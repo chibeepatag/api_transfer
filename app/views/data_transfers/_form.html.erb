@@ -1,5 +1,39 @@
-<%= form_with model: @data_transfer do |transfer| %>
+<%= form_with model: @data_transfer do |data_transfer| %>
     <hr>
-    <h2>Insert form builder here</h2>
-    <%= transfer.submit %>
+    <div>
+        <table>
+            <th>IMonggo c4 Account Details</th>
+            <tr>
+                <td><%= data_transfer.label :c4_acct_name %></td>
+                <td><%= data_transfer.text_field :c4_acct_name %></td>
+            </tr>
+            <tr>
+                <td><%= data_transfer.label :c4_token %></td>
+                <td><%= data_transfer.text_field :c4_token %></td>
+            </tr>
+            <th>IMonggo c3 Account Details</th>
+            <tr>
+                <td><%= data_transfer.label :c3_acct_name %></td>
+                <td><%= data_transfer.text_field :c3_acct_name %></td>
+            </tr>
+            <tr>
+                <td><%= data_transfer.label :c3_token %></td>
+                <td><%= data_transfer.text_field :c3_token %></td>
+            </tr>
+            <tr>
+                <td><%= data_transfer.label :c3_url %></td>
+                <td><%= data_transfer.text_field :c3_url %></td>
+            </tr>
+            <th>Insert Request Details</th>
+            <tr>
+                <td>Data Type</td>
+                <td><%= data_transfer.select :attr, ['Products', 'Users', 'Invoices', 'Documents'] %></td>
+            </tr>
+            <tr>
+                <td><%= data_transfer.label :page %></td>
+                <td><%= data_transfer.select :page, 1..50 %></td>
+            </tr>
+        </table>
+    </div>
+    <%= data_transfer.submit %>
 <% end %>
