@@ -1,2 +1,0 @@
-class DataTransfer < ApplicationRecord
-end
