@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_26_020612) do
     t.text "http_errors"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "transfer_data_type"
   end
 
 end

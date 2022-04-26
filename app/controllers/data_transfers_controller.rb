@@ -27,7 +27,8 @@ class DataTransfersController < ApplicationController
             params.require(:data_transfer).permit(
                 :c4_acct_name, :c4_token, :c3_acct_name,
                 :c3_token, :c3_url, :page,
-                :job_start_time, :job_end_time, :http_errors
+                :job_start_time, :job_end_time, :http_errors,
+                :transfer_data_type
             )
         end
 end

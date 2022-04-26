@@ -27,7 +27,8 @@
             <th>Insert Request Details</th>
             <tr>
                 <td>Data Type</td>
-                <td><%= data_transfer.select :attr, ['Products', 'Users', 'Invoices', 'Documents'] %></td>
+                <td><%= data_transfer.select :transfer_data_type, 
+                ['Products', 'Users', 'Invoices', 'Documents'] %></td>
             </tr>
             <tr>
                 <td><%= data_transfer.label :page %></td>
