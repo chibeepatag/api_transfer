@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  c4_acct_name: MyString
+  c4_token: MyString
+  c3_acct_name: MyString
+  c3_token: MyString
+  c3_url: MyString
+  page: 1
+  job_start_time: 2022-04-26 08:48:58
+  job_end_time: 2022-04-26 08:48:58
+  errors: MyText
+
+two:
+  c4_acct_name: MyString
+  c4_token: MyString
+  c3_acct_name: MyString
+  c3_token: MyString
+  c3_url: MyString
+  page: 1
+  job_start_time: 2022-04-26 08:48:58
+  job_end_time: 2022-04-26 08:48:58
+  errors: MyText
