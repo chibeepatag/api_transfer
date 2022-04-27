@@ -1,5 +1,5 @@
 module ApplicationHelper
-    # POST Request Handler 
+    # URL for POST Request
     def postRequestURLc3(api_url, data_type)
         return "#{api_url}/api/#{data_type.downcase}.json"
     end
@@ -19,6 +19,7 @@ module ApplicationHelper
     def processRequest(request_url, apiToken)
         #Handles URL Requests
         uri = URI(request_url)
+
         req = Net::HTTP::Get.new(uri)
 
         #API Token Handling
