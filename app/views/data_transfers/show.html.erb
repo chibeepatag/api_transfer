@@ -1,10 +1,33 @@
 <h1>Data Transfer Request</h1>
 <ul>
     <li><b>C4 Account:</b> <%= @data_transfer.c4_acct_name  %></li>
-    <li><b>C4 API Token:</b> <%= @data_transfer.c4_token %></li>
+    <li><b>C4 API Token:</b> <code><%= @data_transfer.c4_token %></code></li>
     <li><b>C3 Account:</b> <%= @data_transfer.c3_acct_name %></li>
-    <li><b>C3 API Token:</b> <%= @data_transfer.c3_token %></li>
+    <li><b>C3 API Token:</b> <code><%= @data_transfer.c3_token %></code></li>
     <li><b>C3 API URL:</b> <%= @data_transfer.c3_url %></li>
     <li><b>Data Type:</b> <%= @data_transfer.transfer_data_type %></li>
     <li><b>Page to Transfer:</b> <%= @data_transfer.page %></li>
 </ul>
+
+<%= link_to "Return to Requests", data_transfers_path %>
+
+<hr>
+<h2>--Debugging Purposes Only--</h2>
+<ul>
+    <li>
+        <b>C4 GET Request URL -></b>
+        <%= c4URL = getRequestURLc4 @data_transfer.transfer_data_type, @data_transfer.page  %>
+    </li>
+    <li>
+        <b>C3 POST Request URL -></b>
+        <%= c3URL = postRequestURLc3 @data_transfer.c3_url, @data_transfer.transfer_data_type %>
+    </li>
+</ul>
+
+<hr>
+<h2>Request Response for C4 (perform GET)</h2>
+<%= processRequest c4URL, @data_transfer.c4_token %>
+
+<hr>
+<h2>Request Response for C3 (perform GET)</h2>
+<%= processRequest c3URL, @data_transfer.c3_token %>

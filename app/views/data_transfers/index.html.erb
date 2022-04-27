@@ -1,1 +1,10 @@
 <h1>Data Transfer Requests</h1>
+<% @data_transfers.each do |transfer| %>
+    <ul>
+        <li>
+            C4 Account: <%= link_to transfer.c4_acct_name, data_transfer_path(transfer) %> | Transfer to:
+            <%= transfer.c3_acct_name %>  | Page:
+            <%= transfer.page %> | Data: <%= transfer.transfer_data_type %>
+        </li>
+    </ul>
+<% end %>
