@@ -1,4 +1,9 @@
 class DataTransfersController < ApplicationController
+    # Importing a module for handling HTTP Requests
+    require "net/http"
+    require "uri"
+
+    # Controller Actions
     def index
         @data_transfers = DataTransfer.all
     end
