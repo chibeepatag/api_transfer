@@ -1,4 +1,8 @@
 module ApplicationHelper
+    def transfer_attributes
+        return ["minimum_quantity", "disable_discount", "cost", "allow_decimal_quantities", "barcode_array", "tag_list", "retail_price", "name", "tax_exempt", "barcode_list", "tax_rates", "disable_inventory", "stock_no", "status", "maximum_quantity", "enable_open_price", "description", "utc_created_at"]
+    end
+    
     # URL for POST Request
     def postRequestURLc3(api_url, data_type)
         return "#{api_url}/api/#{data_type.downcase}.json"
