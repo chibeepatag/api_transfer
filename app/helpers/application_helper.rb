@@ -16,7 +16,7 @@ module ApplicationHelper
 
     #Deals with Products API Only
     def processPostReq(req_url, apiToken, res)
-        reqs = Hash.new
+        reqs = []
         entry = Hash.new
         # Note that tax_rates, utc_created_at, status, minimum_quantity, maximum_quantity are READ-ONLY
         # barcode_array attribute is only found on C3 Accounts!
@@ -29,7 +29,7 @@ module ApplicationHelper
             end
             prod['product'] = entry
             req = processRequest req_url, apiToken, "post", prod.to_json
-            reqs[entry['name']] = req
+            reqs.push(req)
         end
         return reqs
     end
