@@ -6,7 +6,7 @@ module ApplicationHelper
 
     # URL for GET Request
     def getRequestURLc4(data_type, page_num)
-        return "https://c4.imonggo.com/api/#{data_type.downcase}.json?page=#{page_num}&active_only=1"
+        return "https://c4.imonggo.com/api/#{data_type.downcase}.json?page=#{page_num}"
     end
 
     # This function counts the number of active entries given a page_count query
