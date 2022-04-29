@@ -16,20 +16,20 @@ module ApplicationHelper
 
     #Deals with Products API Only
     def processPostReq(req_url, apiToken, res)
-        reqs = []
+        reqs = Hash.new
+        entry = Hash.new
         # Note that tax_rates, utc_created_at, status, minimum_quantity, maximum_quantity are READ-ONLY
         # barcode_array attribute is only found on C3 Accounts!
         trans = ["disable_discount", "cost", "allow_decimal_quantities", "tag_list", "retail_price", "name", "tax_exempt", "barcode_list", "disable_inventory", "stock_no", "enable_open_price", "description"]
         response = JSON.parse(res)
         response.each do |e|
             prod = Hash.new
-            entry = Hash.new
             trans.each do |t|
                 entry[t] = e[t]
             end
             prod['product'] = entry
-            puts processRequest req_url, apiToken, "post", prod.to_json
-            reqs.push(prod.to_json)
+            req = processRequest req_url, apiToken, "post", prod.to_json
+            reqs[entry['name']] = req
         end
         return reqs
     end
