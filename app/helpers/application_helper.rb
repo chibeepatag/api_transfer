@@ -1,12 +1,12 @@
 module ApplicationHelper
     # URL for POST Request
     def postRequestURLc3(api_url, data_type)
-        return "#{api_url}/api/#{data_type.downcase}.json?active_only=1"
+        return "#{api_url}/api/#{data_type.downcase}.json?"
     end
 
     # URL for GET Request
     def getRequestURLc4(data_type, page_num)
-        return "https://c4.imonggo.com/api/#{data_type.downcase}.json?page=#{page_num}"
+        return "https://c4.imonggo.com/api/#{data_type.downcase}.json?active_only=1&page=#{page_num}"
     end
 
     # This function counts the number of active entries given a page_count query
