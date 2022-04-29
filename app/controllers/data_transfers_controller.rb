@@ -2,6 +2,7 @@ class DataTransfersController < ApplicationController
     # Importing a module for handling HTTP Requests
     require "net/http"
     require "uri"
+    require "json"
 
     # Controller Actions
     def index

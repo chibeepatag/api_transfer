@@ -26,8 +26,8 @@
 
 <hr>
 <h2>Request Response for C4 (perform GET)</h2>
-<%= processRequest c4URL, @data_transfer.c4_token %>
+<%= res_body = processRequest c4URL, @data_transfer.c4_token, "get" %>
 
 <hr>
-<h2>Request Response for C3 (perform GET)</h2>
-<%= processRequest c3URL, @data_transfer.c3_token %>
+<h2>Request Response for C3 (perform POST)</h2>
+<%= processPostReq c3URL, @data_transfer.c3_token, res_body%>
