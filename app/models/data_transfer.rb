@@ -1,16 +1,16 @@
 class DataTransfer < ApplicationRecord
-  include Product
 
   SUCCESS_STATUS_C4 = 'pull from c4 success'
   SUCCESS_STATUS_C3 = 'post to c3 success'
   FAIL_STATUS_C4 = 'pull from c4 failed'
   FAIL_STATUS_C3 = 'post to c3 failed'
 
+  after_initialize  :set_entity
   #after_create :call_worker 
 
   def transfer
     c4_data = get_data_from_c4
-    c3_data = prepare_data(c4_data)
+    c3_data = @entity.prepare_data(c4_data)
     post_data_to_c3 data
   end
 
@@ -31,6 +31,16 @@ class DataTransfer < ApplicationRecord
     else
       errors = "" #TODO retrieve http error and set here
       update(status: FAIL_STATUS_C4, http_errors: errors)
+    end
+  end
+
+  def set_entity
+    case transfer_data_type
+    when 'products'
+      @entity = Product.new
+    when 'invoices'
+      @entity = Invoice.new
+      #TODO: add other entities here
     end
   end
 
