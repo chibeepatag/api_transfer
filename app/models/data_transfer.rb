@@ -5,7 +5,7 @@ class DataTransfer < ApplicationRecord
   FAIL_STATUS_C4 = 'pull from c4 failed'
   FAIL_STATUS_C3 = 'post to c3 failed'
 
-  after_initialize  :set_entity
+  after_initialize :set_entity
   #after_create :call_worker 
 
   def transfer

@@ -14,20 +14,20 @@ module ApplicationHelper
         return (num_entries % 50 == 0) ? (num_entries / 50) : ((num_entries / 50) + 1)
     end
 
-    #Deals with Products API Only
-    def processPostReq(req_url, apiToken, res)
+    # Post Request Handler given Data Type
+    def jsonEntry(data_type, entry)
+        if data_type == 'products'
+            puts "ENTITY: #{@entity}"
+            return @entity.prepare_data(entry)
+        end
+    end
+
+    #Creates and Posts Entries with All Data Types given C4 GET Response
+    def processPostReq(req_url, apiToken, data_type, res)
         reqs = []
-        entry = Hash.new
-        # Note that tax_rates, utc_created_at, status, minimum_quantity, maximum_quantity are READ-ONLY
-        # barcode_array attribute is only found on C3 Accounts!
-        trans = ["disable_discount", "cost", "allow_decimal_quantities", "tag_list", "retail_price", "name", "tax_exempt", "barcode_list", "disable_inventory", "stock_no", "enable_open_price", "description"]
-        response = JSON.parse(res)
-        response.each do |e|
-            prod = Hash.new
-            trans.each do |t|
-                entry[t] = e[t]
-            end
-            prod['product'] = entry
+        JSON.parse(res).each do |e|
+            prod = jsonEntry(data_type, e)
+            puts "Product..."
             req = processRequest req_url, apiToken, "post", prod.to_json
             reqs.push(req)
         end
@@ -35,7 +35,7 @@ module ApplicationHelper
     end
     
     
-    # This function only deals with Products API and HTTP GET/POST requests
+    # This function deals with HTTP GET/POST requests
     def processRequest(request_url, apiToken, reqType="get", data=nil)
         #Handles URL Requests
         uri = URI(request_url)
