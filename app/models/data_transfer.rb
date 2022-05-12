@@ -9,7 +9,7 @@ class DataTransfer < ApplicationRecord
   FAIL_STATUS_C3 = 'post to c3 failed'
 
   after_initialize :set_entity
-  #after_create :call_worker 
+  after_create :call_worker 
 
   def transfer
     c4_data = get_data_from_c4
@@ -96,6 +96,5 @@ class DataTransfer < ApplicationRecord
   def call_worker
     DataTransferJob.perform_async(id)
   end
-
 
 end
