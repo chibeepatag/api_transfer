@@ -2,12 +2,13 @@ class Invoice
   require 'json'
   INVOICE_ATTRS = ["tax_exempt", "salesman_id", "reference", "payments", "user_id", "tax_inclusive", "invoice_extra_charges", "customer_id", "invoice_lines", "remark", "invoice_tax_rates", "customer", "parent", "customer_name"]
   
-  def build_c3_json c4_json
+  # Method to prepare JSON for C3 Post Requests
+  def prepare_data c4_json
     reqs = []
     JSON.parse(c4_json).each do |e|
       inv = Hash.new
       entry = Hash.new
-      self.INVOICE_ATTRS.each do |t|
+      INVOICE_ATTRS.each do |t|
         case t
           when 'invoice_lines'
             entry[t] = nested_handlers(e[t], 'invoice_lines')
@@ -24,7 +25,7 @@ class Invoice
     inv['invoice'] = entry
     reqs.push(inv.to_json)
     end
-  return inv.to_json
+    return reqs
   end
 
   def nest_attrs(data_type)

@@ -88,7 +88,9 @@ class DataTransfer < ApplicationRecord
         @entity = Product.new
         puts "Entity is #{@entity}"
       when 'Invoices'
+        puts "Invoice is initialized!!!"
         @entity = Invoice.new
+        puts "Entity is #{@entity}"
         #TODO: add other entities here
     end
   end
