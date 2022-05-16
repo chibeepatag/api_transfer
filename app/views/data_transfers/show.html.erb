@@ -12,6 +12,12 @@
 <%= link_to "Return to Requests", data_transfers_path %>
 
 <hr>
+
+<h2>--Transfer Status--</h2>
+<%= @data_transfer.status %>
+
+
+<!--  
 <h2>--Debugging Purposes Only--</h2>
 <ul>
     <li>
@@ -31,3 +37,5 @@
 <hr>
 <h2>Request Response for C3 (perform POST)</h2>
 <%= processPostReq c3URL, @data_transfer.c3_token,@data_transfer.transfer_data_type, res_body%>
+ -->
+ 
