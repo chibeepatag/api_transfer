@@ -16,26 +16,4 @@
 <h2>--Transfer Status--</h2>
 <%= @data_transfer.status %>
 
-
-<!--  
-<h2>--Debugging Purposes Only--</h2>
-<ul>
-    <li>
-        <b>C4 GET Request URL -></b>
-        <%= c4URL = getRequestURLc4 @data_transfer.transfer_data_type, @data_transfer.page  %>
-    </li>
-    <li>
-        <b>C3 POST Request URL -></b>
-        <%= c3URL = postRequestURLc3 @data_transfer.c3_url, @data_transfer.transfer_data_type %>
-    </li>
-</ul>
-
-<hr>
-<h2>Request Response for C4 (perform GET)</h2>
-<%= res_body = processRequest c4URL, @data_transfer.c4_token, "get" %>
-
-<hr>
-<h2>Request Response for C3 (perform POST)</h2>
-<%= processPostReq c3URL, @data_transfer.c3_token,@data_transfer.transfer_data_type, res_body%>
- -->
  
