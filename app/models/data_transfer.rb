@@ -68,6 +68,7 @@ class DataTransfer < ApplicationRecord
     c3.each do |response|
       req = process_request(self.c3_api_url, self.c3_token, 'post', response) 
       statuses.push(req)
+      puts "statuses: #{statuses}"
     end
 
     #Status Generator
@@ -92,6 +93,9 @@ class DataTransfer < ApplicationRecord
         @entity = Invoice.new
         puts "Entity is #{@entity}"
         #TODO: add other entities here
+      when 'Customers'
+        puts "Customer is Initialized!!!"
+        @entity = Customer.new
     end
   end
 
