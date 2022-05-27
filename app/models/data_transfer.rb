@@ -96,6 +96,8 @@ class DataTransfer < ApplicationRecord
       when 'Customers'
         puts "Customer is Initialized!!!"
         @entity = Customer.new
+      when 'Users'
+        @entity = User.new
     end
   end
 
