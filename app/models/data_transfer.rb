@@ -98,6 +98,8 @@ class DataTransfer < ApplicationRecord
         @entity = Customer.new
       when 'Users'
         @entity = User.new
+      when 'Branches'
+        @entity = Branch.new
     end
   end
 
