@@ -2,7 +2,7 @@ class Branch
     require 'json'
     # read-only
     # id, site_type, subscription_type, status, utc_created_at, utc_updated_at
-    BRANCH_ATTRS = ["name", "state", "country", "city", "zipcode", "tin", "status", "street", "utc_expired_at", "subscribed_at"] 
+    BRANCH_ATTRS = ["name", "state", "country", "city", "zipcode", "tin", "status", "street", "subscribed_at"] 
     def prepare_data c4_json
         requests = []
         JSON.parse(c4_json).each do |e|

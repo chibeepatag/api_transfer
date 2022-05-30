@@ -34,6 +34,15 @@
                 <td><%= data_transfer.label :page %></td>
                 <td><%= data_transfer.number_field :page %></td>
             </tr>
+            <th>ID Mappings</th>
+            <tr>
+                <td>Name</td>
+                <td><%= data_transfer.text_field :name %></td>
+            </tr>
+            <tr>
+                <td><%= data_transfer.label "ID" %></td>
+                <td><%= data_transfer.number_field :id %></td>
+            </tr>
         </table>
     </div>
     <div>
