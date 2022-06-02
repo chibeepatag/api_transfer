@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_02_031817) do
     t.datetime "updated_at", null: false
     t.string "transfer_data_type"
     t.string "status", limit: 100
-    t.integer "user_id", limit: 100
+    t.integer "user_id"
   end
 
 end
