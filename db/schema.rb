@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_03_072942) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_02_031817) do
   create_table "data_transfers", force: :cascade do |t|
     t.string "c4_acct_name"
     t.string "c4_token"
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_03_072942) do
     t.datetime "updated_at", null: false
     t.string "transfer_data_type"
     t.string "status", limit: 100
+    t.integer "user_id", limit: 100
   end
 
 end

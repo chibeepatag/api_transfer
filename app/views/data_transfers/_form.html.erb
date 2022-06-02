@@ -34,14 +34,10 @@
                 <td><%= data_transfer.label :page %></td>
                 <td><%= data_transfer.number_field :page %></td>
             </tr>
-            <th>ID Mappings</th>
+            <th>Map <code>user_id</code>'s for Invoices</th>
             <tr>
-                <td>Name</td>
-                <td><%= data_transfer.text_field :name %></td>
-            </tr>
-            <tr>
-                <td><%= data_transfer.label "ID" %></td>
-                <td><%= data_transfer.number_field :id %></td>
+                <td><code>C3</code> User ID</td>
+                <td><%= data_transfer.number_field :user_id %></td>
             </tr>
         </table>
     </div>

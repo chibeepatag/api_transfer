@@ -19,7 +19,12 @@ class Invoice
           when 'invoice_tax_rates'
             entry[t] = nested_handlers(e[t], 'invoice_tax_rates')
           else
-            entry[t] = e[t]
+            if t == 'user_id'
+                # Put code for mapping user_id here
+                # i.e. entry[t] = user_id
+            else
+              entry[t] = e[t]
+            end
         end
       end
     inv['invoice'] = entry
