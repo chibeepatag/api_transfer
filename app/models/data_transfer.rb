@@ -11,7 +11,12 @@ class DataTransfer < ApplicationRecord
   after_initialize :set_entity
   after_create :call_worker 
 
+  def C3_id
+    return self.user_id
+  end 
+
   def transfer
+    puts "INITIALIZING TRANSFER..."
     c4_data = get_data_from_c4
     c3_data = @entity.prepare_data(c4_data)
     post_data_to_c3 c3_data
@@ -22,7 +27,7 @@ class DataTransfer < ApplicationRecord
   end
 
   def c4_api_url
-    "https://c4.imonggo.com/api/#{self.transfer_data_type.downcase}.json?active_only=1&page=#{self.page}"
+    "https://c4.imonggo.com/api/#{self.transfer_data_type.downcase}.json?page=#{self.page}"
   end
 
   def process_request(url, token, req_type="get", data=nil)
@@ -66,6 +71,7 @@ class DataTransfer < ApplicationRecord
     #TODO post data to c3
     statuses = []
     c3.each do |response|
+      puts response
       req = process_request(self.c3_api_url, self.c3_token, 'post', response) 
       puts "Success?: #{req.is_a? Net::HTTPSuccess}"
       statuses.push(req)

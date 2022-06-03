@@ -21,7 +21,9 @@ class Invoice
           else
             if t == 'user_id'
                 # Put code for mapping user_id here
-                # i.e. entry[t] = user_id
+                puts @data_transfer
+                puts "USER ID ENTERED: #{@data_transfer.C3_id}"
+                entry[t] = @data_transfer.C3_id
             else
               entry[t] = e[t]
             end
@@ -30,6 +32,7 @@ class Invoice
     inv['invoice'] = entry
     reqs.push(inv.to_json)
     end
+    print reqs
     return reqs
   end
 
