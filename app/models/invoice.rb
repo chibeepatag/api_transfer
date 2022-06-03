@@ -20,10 +20,7 @@ class Invoice
             entry[t] = nested_handlers(e[t], 'invoice_tax_rates')
           else
             if t == 'user_id'
-                # Put code for mapping user_id here
-                puts @data_transfer
-                puts "USER ID ENTERED: #{@data_transfer.C3_id}"
-                entry[t] = @data_transfer.C3_id
+              entry[t] = nil
             else
               entry[t] = e[t]
             end

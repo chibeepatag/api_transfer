@@ -71,7 +71,7 @@ class DataTransfer < ApplicationRecord
     #TODO post data to c3
     statuses = []
     c3.each do |response|
-      puts response
+      response['user_id'] = self.user_id
       req = process_request(self.c3_api_url, self.c3_token, 'post', response) 
       puts "Success?: #{req.is_a? Net::HTTPSuccess}"
       statuses.push(req)
