@@ -15,7 +15,7 @@ class Invoice
           when 'payments'
             entry[t] = nested_handlers(e[t], 'payments')
           when 'customer'
-            entry[t] = customer_handler(e[t])
+            entry[t] = nil
           when 'invoice_tax_rates'
             entry[t] = nested_handlers(e[t], 'invoice_tax_rates')
           else
@@ -26,10 +26,10 @@ class Invoice
             end
         end
       end
+
     inv['invoice'] = entry
     reqs.push(inv.to_json)
     end
-    print reqs
     return reqs
   end
 
@@ -39,8 +39,6 @@ class Invoice
         return ["subtotal", "line_no", "discount_text", "product_id", "remark", "price", "quantity",  "retail_price"]
       when 'payments'
         return ["payment_type_id", "tender", "amount"]
-      when 'customer'
-        return ["utc_updated_at", "tax_exempt", "gender", "fax", "mobile", "status", "country", "street", "first_name", "company_name", "tin", "name", "membership_expired_at", "birthday", "zipcode", "last_name", "customer_type_id", "telephone", "remark", "code", "available_points", "utc_created_at", "city", "state", "email", "alternate_code"]
       when 'invoice_tax_rates'
         return ["amount", "rate"]
     end
@@ -48,7 +46,8 @@ class Invoice
   
   def nested_handlers(nested_array, data_type)
     entries = []
-    nested_array.each do |e|
+    a = (nested_array == nil) ? Array.new : nested_array
+    a.each do |e|
       entry_hash = Hash.new
       self.nest_attrs(data_type).each do |attr|
         entry_hash[attr] = e[attr]
@@ -60,9 +59,25 @@ class Invoice
   
   def customer_handler(customer)
     entry_hash = Hash.new
+	  c = (customer == nil) ? Array.new : customer
     self.nest_attrs('customer').each do |customer_attr|
-      entry_hash[customer_attr] = customer[customer_attr]
+      entry_hash[customer_attr] = c[customer_attr]
     end
     return entry_hash
   end
 end
+
+=begin
+#main
+require 'json'
+i = Invoice.new
+f = File.open("invoices_C4.json", "r")
+json_4 = f.read()
+
+reqs = i.prepare_data(json_4)
+
+      when 'customer'
+        puts "DATA TYPE HANDLED: #{data_type}"
+        return ["utc_updated_at", "tax_exempt", "gender", "fax", "mobile", "status", "country", "street", "first_name", "company_name", "tin", "name", "membership_expired_at", "birthday", "zipcode", "last_name", "customer_type_id", "telephone", "remark", "code", "available_points", "utc_created_at", "city", "state", "email", "alternate_code"]
+
+=end
