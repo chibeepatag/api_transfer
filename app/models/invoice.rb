@@ -66,18 +66,3 @@ class Invoice
     return entry_hash
   end
 end
-
-=begin
-#main
-require 'json'
-i = Invoice.new
-f = File.open("invoices_C4.json", "r")
-json_4 = f.read()
-
-reqs = i.prepare_data(json_4)
-
-      when 'customer'
-        puts "DATA TYPE HANDLED: #{data_type}"
-        return ["utc_updated_at", "tax_exempt", "gender", "fax", "mobile", "status", "country", "street", "first_name", "company_name", "tin", "name", "membership_expired_at", "birthday", "zipcode", "last_name", "customer_type_id", "telephone", "remark", "code", "available_points", "utc_created_at", "city", "state", "email", "alternate_code"]
-
-=end
