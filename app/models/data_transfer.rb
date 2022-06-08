@@ -71,16 +71,17 @@ class DataTransfer < ApplicationRecord
     #TODO post data to c3
     statuses = []
     c3.each do |response|
-      r = JSON.parse(response)
-      r['invoice']['user_id'] = self.user_id
-      response = r.to_json
+      if self.transfer_data_type == 'Invoices'
+        r = JSON.parse(response)
+        r['invoice']['user_id'] = self.user_id
+        response = r.to_json
+      end
 
       req = process_request(self.c3_api_url, self.c3_token, 'post', response) 
-      puts "Success?: #{req.is_a? Net::HTTPSuccess}"
       statuses.push(req)
-      #puts "statuses: #{statuses}"
+      
     end
-
+    puts "statuses: #{statuses}"
     #Status Generator
     if true #TODO check if SUCCESS_STATUS_C3 was successul
       update(status: SUCCESS_STATUS_C4)
@@ -93,7 +94,7 @@ class DataTransfer < ApplicationRecord
   end
 
   def set_entity
-    case transfer_data_type
+    case self.transfer_data_type
       when 'Products'
         puts "Product is initialized!!!"
         @entity = Product.new
